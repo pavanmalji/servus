@@ -1,4 +1,4 @@
-const POSTMASTER_BASE_URL = "http://164.92.247.14:8000";
+const POSTMASTER_BASE_URL = "https://postmaster.ixg.at";
 const APPLICATION_ID = "servus";
 const POLL_INTERVAL_MS = 2000;
 const LAST_MESSAGES_COUNT = 5;
