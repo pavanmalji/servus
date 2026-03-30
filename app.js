@@ -114,6 +114,7 @@ class PostmasterClient {
 }
 
 const ui = {
+  setupCard: document.getElementById("setupCard"),
   usernameInput: document.getElementById("usernameInput"),
   createSessionBtn: document.getElementById("createSessionBtn"),
   joinSessionInput: document.getElementById("joinSessionInput"),
@@ -189,12 +190,21 @@ async function onJoinSession() {
 }
 
 async function openSession(sessionId) {
+  const previousSessionId = state.sessionId;
   state.sessionId = sessionId;
-  ui.sessionIdText.textContent = sessionId;
-  ui.chatCard.classList.remove("hidden");
   ui.joinSessionInput.value = sessionId;
 
-  await refreshMessages({ forceRender: true });
+  try {
+    await refreshMessages({ forceRender: true });
+  } catch (error) {
+    state.sessionId = previousSessionId;
+    throw error;
+  }
+
+  ui.sessionIdText.textContent = sessionId;
+  ui.setupCard.classList.add("hidden");
+  ui.chatCard.classList.remove("hidden");
+  clearStatus();
   startPolling();
 }
 
@@ -202,6 +212,7 @@ function onLeaveSession() {
   stopPolling();
   state.sessionId = "";
   state.latestMessageFingerprint = "";
+  ui.setupCard.classList.remove("hidden");
   ui.chatCard.classList.add("hidden");
   ui.messagesList.innerHTML = "";
   ui.sessionIdText.textContent = "";
