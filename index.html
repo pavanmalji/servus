@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servus Chat</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="card intro-card">
+        <h1>Servus Chat</h1>
+        <p class="muted">
+          Create a session and share the key, or join an existing one.
+        </p>
+
+        <div class="grid">
+          <label>
+            Username
+            <input id="usernameInput" type="text" maxlength="128" placeholder="mouse" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="createSessionBtn" type="button">Create Session</button>
+        </div>
+
+        <div class="join-row">
+          <input id="joinSessionInput" type="text" placeholder="Session key (for example: rocket-7Q2M)" />
+          <button id="joinSessionBtn" type="button">Join Session</button>
+        </div>
+
+        <p id="statusText" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="chatCard" class="card chat-card hidden">
+        <div class="chat-header">
+          <div>
+            <h2>Session</h2>
+            <p class="muted mono" id="sessionIdText"></p>
+          </div>
+          <div class="header-actions">
+            <button id="copySessionBtn" type="button">Copy Key</button>
+            <button id="leaveSessionBtn" type="button" class="secondary">Leave</button>
+          </div>
+        </div>
+
+        <ul id="messagesList" class="messages"></ul>
+
+        <form id="messageForm" class="message-form">
+          <input id="messageInput" type="text" maxlength="10000" placeholder="Type message..." />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

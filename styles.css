@@ -1,0 +1,248 @@
+:root {
+  --bg-top: #0b1220;
+  --bg-bottom: #1f3a8a;
+  --text: #111827;
+  --muted: #4b5563;
+  --panel: rgba(255, 255, 255, 0.86);
+  --panel-border: rgba(255, 255, 255, 0.45);
+  --primary: #2563eb;
+  --primary-strong: #1d4ed8;
+  --soft: #eef2ff;
+  --danger: #dc2626;
+  --ok: #166534;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 420px at 0% -10%, #334155 0%, transparent 55%),
+    radial-gradient(900px 400px at 100% 0%, #0ea5e9 0%, transparent 50%),
+    linear-gradient(170deg, var(--bg-top), var(--bg-bottom));
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 28px 16px 44px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+.card + .card {
+  margin-top: 16px;
+}
+
+h1,
+h2 {
+  margin: 0 0 8px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  letter-spacing: 0.2px;
+}
+
+.pill {
+  margin: 0 0 14px;
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: #1e3a8a;
+  background: #dbeafe;
+  border: 1px solid #bfdbfe;
+}
+
+.muted {
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input {
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 11px 12px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+  outline: none;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(140deg, var(--primary), var(--primary-strong));
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.36);
+  filter: brightness(1.02);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.secondary {
+  background: linear-gradient(140deg, #64748b, #475569);
+  box-shadow: 0 8px 18px rgba(51, 65, 85, 0.26);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.actions {
+  margin: 12px 0;
+}
+
+.join-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.status {
+  min-height: 24px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.status.ok {
+  color: var(--ok);
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.messages {
+  list-style: none;
+  margin: 14px 0;
+  padding: 12px;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  min-height: 190px;
+  max-height: 420px;
+  overflow: auto;
+  background: linear-gradient(180deg, #f8faff 0%, #eff6ff 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.messages li {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #fff;
+  max-width: 90%;
+}
+
+.messages li.own-message {
+  align-self: flex-end;
+  background: var(--soft);
+  border-color: #c7d2fe;
+}
+
+.message-meta {
+  font-size: 12px;
+  color: #5f6c85;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.message-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .chat-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions button {
+    flex: 1;
+  }
+
+  .join-row,
+  .message-form {
+    grid-template-columns: 1fr;
+  }
+
+  .messages li {
+    max-width: 100%;
+  }
+}
